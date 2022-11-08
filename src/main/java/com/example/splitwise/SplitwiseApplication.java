@@ -1,5 +1,6 @@
 package com.example.splitwise;
 
+import com.example.splitwise.models.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
