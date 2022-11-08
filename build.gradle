@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.7.5'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 	id 'java'
+	id "org.flywaydb.flyway" version "9.7.0"
 }
 
 group = 'com.example'
@@ -29,4 +30,11 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+flyway {
+	url = 'jdbc:postgresql://localhost:5432/splitwise'
+	user = 'splitwise'
+	password = 'password@123'
+	cleanDisabled = System.getenv("CLEAN_DISABLED") // either from system env or gradle.properties
 }
