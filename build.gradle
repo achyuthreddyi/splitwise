@@ -2,12 +2,13 @@ plugins {
 	id 'org.springframework.boot' version '2.7.5'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 	id 'java'
-	id "org.flywaydb.flyway" version "9.7.0"
+	id 'application'
 }
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '1.8'
+mainClassName = 'com.example.splitwise.SplitwiseApplication'
 
 configurations {
 	compileOnly {
@@ -26,15 +27,9 @@ dependencies {
 	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation "org.flywaydb:flyway-core:9.7.0"
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
-}
-
-flyway {
-	url = 'jdbc:postgresql://localhost:5432/splitwise'
-	user = 'splitwise'
-	password = 'password@123'
-	cleanDisabled = System.getenv("CLEAN_DISABLED") // either from system env or gradle.properties
 }
